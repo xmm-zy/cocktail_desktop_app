@@ -664,7 +664,41 @@ async function loadExistingCocktail() {
   .cocktail-create-preview {
     position: relative;
     top: 0;
-    order: -1;
+    order: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .cocktail-create-page {
+    min-height: 100dvh;
+    padding:
+      max(16px, env(safe-area-inset-top))
+      max(14px, env(safe-area-inset-right))
+      calc(88px + env(safe-area-inset-bottom))
+      max(14px, env(safe-area-inset-left));
+    background-attachment: scroll;
+  }
+
+  .cocktail-create-nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .cocktail-create-fields--two,
+  .cocktail-create-preview > div {
+    grid-template-columns: 1fr;
+  }
+
+  .cocktail-create-form input,
+  .cocktail-create-form select,
+  .cocktail-create-form textarea {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .cocktail-create-submit {
+    min-height: 48px;
   }
 }
 

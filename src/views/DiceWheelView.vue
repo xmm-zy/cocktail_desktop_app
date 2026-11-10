@@ -154,6 +154,7 @@ const forcedWheelResult = ref("");
 const wheelHistory = ref(safeRead(WHEEL_HISTORY_KEY, []));
 const wheelRotation = ref(0);
 const isSpinning = ref(false);
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const lastDiceRoll = computed(() => diceHistory.value[0] || null);
 const lastWheelResult = computed(() => wheelHistory.value[0] || null);
@@ -254,16 +255,17 @@ function spinWheel() {
   const currentNormalized = ((wheelRotation.value % 360) + 360) % 360;
   const targetNormalized = ((target % 360) + 360) % 360;
   const forward = (targetNormalized - currentNormalized + 360) % 360;
+  const spinDuration = prefersReducedMotion ? 0 : 3600;
 
   isSpinning.value = true;
-  wheelRotation.value += 360 * 6 + forward;
+  wheelRotation.value += (prefersReducedMotion ? 0 : 360 * 6) + forward;
 
   window.setTimeout(() => {
     const item = { id: uid("wheel"), result, at: new Date().toISOString() };
     wheelHistory.value = [item, ...wheelHistory.value].slice(0, 100);
     safeWrite(WHEEL_HISTORY_KEY, wheelHistory.value);
     isSpinning.value = false;
-  }, 3600);
+  }, spinDuration);
 }
 
 function clearWheelHistory() {
@@ -734,6 +736,47 @@ textarea {
   }
 }
 
+@media (max-width: 720px) {
+  .dice-wheel-shell {
+    width: calc(100% - 16px);
+    padding:
+      max(12px, env(safe-area-inset-top))
+      max(12px, env(safe-area-inset-right))
+      calc(88px + env(safe-area-inset-bottom))
+      max(12px, env(safe-area-inset-left));
+  }
+
+  .dice-wheel-header a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 12px;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .wheel-stage {
+    width: min(78vw, 280px);
+  }
+
+  .wheel-label {
+    width: min(84px, 27%);
+    font-size: clamp(0.68rem, 2.8vw, 0.78rem);
+  }
+
+  .wheel-hub {
+    width: max(24%, 48px);
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
+
 @media (max-width: 520px) {
   .dice-wheel-shell {
     width: calc(100% - 16px);
@@ -806,7 +849,7 @@ textarea {
   .wheel-label {
     width: min(72px, 24%);
     padding: 2px 4px;
-    font-size: clamp(0.55rem, 3.2vw, 0.72rem);
+    font-size: clamp(0.68rem, 3.2vw, 0.74rem);
   }
 
   .wheel-hub {
@@ -838,6 +881,12 @@ textarea {
 
   .wheel-card-decoration {
     transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roulette-wheel {
+    transition: none;
   }
 }
 

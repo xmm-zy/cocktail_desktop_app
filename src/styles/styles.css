@@ -4822,3 +4822,385 @@ h4 {
     min-height: 44px;
   }
 }
+
+/* Mobile polish: readable controls, safe areas and compact single-column flows. */
+.login-modal {
+  z-index: 100;
+}
+
+@media (max-width: 900px) {
+  .menu-turntable-panel {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .menu-turntable-image {
+    object-position: center top;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    overflow-x: clip;
+  }
+
+  body {
+    min-height: 100dvh;
+  }
+
+  .home-shell,
+  .app-shell,
+  .menu-shell,
+  .tools-shell,
+  .simple-shell,
+  .stories-forum-shell,
+  .games-shell {
+    max-width: 100%;
+  }
+
+  .menu-shell,
+  .tools-shell,
+  .simple-shell,
+  .stories-forum-shell,
+  .games-shell {
+    padding-right: max(14px, env(safe-area-inset-right));
+    padding-left: max(14px, env(safe-area-inset-left));
+  }
+
+  .menu-shell,
+  .tools-shell,
+  .simple-shell,
+  .stories-forum-shell,
+  .games-shell,
+  .content-area,
+  .account-page {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom));
+  }
+
+  .home-nav a,
+  .menu-header a,
+  .ghost-button,
+  .account-avatar-upload button,
+  .account-user button,
+  .stories-compose button,
+  .games-header a,
+  .games-create button,
+  .games-room-card button,
+  .games-room-list-head button,
+  .games-room-actions button,
+  .games-chat-form button,
+  .ddz-actions button,
+  .zjh-actions button {
+    min-height: 44px;
+  }
+
+  .home-nav a,
+  .menu-header a,
+  .games-header a {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .search-panel input,
+  .review-form input,
+  .review-form textarea,
+  .stories-compose input,
+  .stories-compose textarea,
+  .stories-compose select,
+  .stories-reply-form textarea,
+  .account-form input,
+  .account-profile-form input,
+  .games-create input,
+  .games-create select,
+  .games-chat-form input {
+    font-size: 16px;
+  }
+
+  .search-panel input {
+    min-height: 44px;
+  }
+
+  .tab {
+    font-size: 0.75rem;
+  }
+
+  .cocktail-card span {
+    font-size: 0.68rem;
+  }
+
+  .cocktail-card small,
+  .menu-player-track,
+  .menu-player-tip,
+  .menu-player-error,
+  .menu-glass-label em {
+    font-size: 0.75rem;
+  }
+
+  .sidebar {
+    padding: 16px;
+  }
+
+  .content-area {
+    padding: 16px 16px calc(88px + env(safe-area-inset-bottom));
+  }
+
+  .sidebar {
+    gap: 16px;
+  }
+
+  .sidebar .sidebar-nav {
+    margin-top: 0;
+    padding-top: 4px;
+  }
+
+  .category-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cocktail-list,
+  .info-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    gap: 14px;
+    margin-bottom: 16px;
+    padding: 18px 16px;
+  }
+
+  .topbar h2 {
+    font-size: clamp(1.8rem, 9vw, 2.8rem);
+    line-height: 1;
+  }
+
+  .ghost-button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .detail-copy {
+    gap: 20px;
+    padding: 24px 16px;
+  }
+
+  .detail-copy h3 {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+    line-height: 1;
+  }
+
+  .review-list {
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+  }
+
+  .menu-page .menu-hero {
+    width: 100%;
+  }
+
+  .menu-player .eyebrow,
+  .menu-player-controls button,
+  .menu-player-actions button {
+    font-size: 0.75rem;
+  }
+
+  .menu-player-controls {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .menu-player-controls .menu-player-play {
+    grid-column: 1 / -1;
+    min-height: 48px;
+    font-size: 1rem;
+  }
+
+  .menu-player-progress input {
+    height: 44px;
+    border: 0;
+    padding: 0;
+    background:
+      linear-gradient(
+        to bottom,
+        transparent 20px,
+        rgba(52, 21, 15, 0.28) 20px 24px,
+        transparent 24px
+      );
+  }
+
+  .menu-player-progress input::-webkit-slider-thumb {
+    width: 22px;
+    height: 22px;
+  }
+
+  .menu-player-progress input::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border: 1px solid rgba(52, 21, 15, 0.45);
+    border-radius: 50%;
+    background: var(--cream);
+  }
+
+  .stories-forum-hero h1 {
+    font-size: clamp(2.25rem, 12vw, 3.4rem);
+    line-height: 1;
+  }
+
+  .stories-filter-tabs,
+  .stories-view-tabs,
+  .tools-match-tabs {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .stories-filter-tabs::-webkit-scrollbar,
+  .stories-view-tabs::-webkit-scrollbar,
+  .tools-match-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .stories-filter-tabs button,
+  .stories-view-tabs button,
+  .tools-match-tabs button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .stories-sort {
+    width: 100%;
+  }
+
+  .stories-sort select {
+    flex: 1;
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .stories-post-card {
+    padding: 14px;
+  }
+
+  .stories-post-card button,
+  .stories-reply-form-actions button,
+  .stories-reply-actions button {
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+
+  .tools-card,
+  .tools-match,
+  .tools-ice-lab {
+    padding: 14px;
+  }
+
+  .games-shell {
+    width: min(100% - 16px, 520px);
+    margin: 8px auto;
+  }
+
+  .games-create button,
+  .games-room-card button,
+  .games-room-list-head button,
+  .games-room-actions button,
+  .games-chat-form button {
+    padding: 10px 12px;
+  }
+
+  .ddz-seats,
+  .zjh-seats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-shell,
+  .tools-shell,
+  .simple-shell,
+  .stories-forum-shell,
+  .games-shell {
+    width: 100%;
+  }
+
+  .menu-shell {
+    padding-top: max(12px, env(safe-area-inset-top));
+  }
+
+  .menu-header,
+  .tools-header,
+  .stories-forum-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .menu-header a,
+  .tools-header a,
+  .stories-forum-header a {
+    justify-content: center;
+  }
+
+  .menu-glass-nav {
+    gap: 14px;
+  }
+
+  .menu-glass-link,
+  .menu-glass-chip,
+  .menu-glass-link--right {
+    width: min(100%, 280px);
+  }
+
+  .menu-glass-link--right .menu-glass-right {
+    max-height: 220px;
+  }
+
+  .detail-owner-panel {
+    gap: 10px;
+  }
+
+  .stories-post-card header {
+    align-items: flex-start;
+  }
+
+  .stories-post-card time {
+    flex: 0 0 auto;
+  }
+
+  .tools-match-tabs button {
+    min-height: 44px;
+  }
+
+  .games-room-card header,
+  .games-room-card-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 720px) and (orientation: landscape) {
+  .home-nav {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .menu-shell,
+  .tools-shell,
+  .stories-forum-shell,
+  .games-shell {
+    padding-top: max(10px, env(safe-area-inset-top));
+  }
+
+  .menu-turntable-panel {
+    grid-template-columns: minmax(130px, 180px) minmax(0, 1fr);
+    justify-items: stretch;
+  }
+
+  .menu-player-visualizer {
+    height: 30px;
+  }
+
+  .detail-copy {
+    padding-top: 18px;
+  }
+}

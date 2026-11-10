@@ -9,7 +9,7 @@
     <section class="content-area">
       <header class="topbar">
         <div>
-          <p class="eyebrow">Desktop Preview</p>
+          <p class="eyebrow">Cocktail Library</p>
           <h2>Classic Cocktail Collection</h2>
           <p v-if="loadNotice" class="cocktail-load-notice">{{ loadNotice }}</p>
         </div>
